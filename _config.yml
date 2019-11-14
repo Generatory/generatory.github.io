@@ -1,1 +1,6 @@
 theme: jekyll-theme-cayman
+
+title: 'App Inventor - Kalkulator Walut'
+description: 'Projekt aplikacji kalkulatora walut wykonanego w app inventorze, pobierającego dane z NBP'
+
+show_downloads: false
