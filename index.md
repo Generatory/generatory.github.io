@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+# App Inventor
 
-You can use the [editor on GitHub](https://github.com/Generatory/generatory.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+App Inventor jest to środowisko do intuicjnego i wizualnego tworzenia aplikacji mobilnych na platformę Android (a w niedługo także iOS) - więcej informacji przeczytasz na stronie projektu - [appinventor.mit.edu](https://appinventor.mit.edu/explore/about-us.html).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Zadanie - Kalkulator walut NBP
 
-### Markdown
+- Zaczynamy od wejścia na stronę AppInventor'a w wersji drugiej oraz zalogowania się kontem google: [ai2.appinventor.mit.edu](http://ai2.appinventor.mit.edu).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Po zalogowaniu tworzymy nowy projekt i nazywamy go np. `KalkulatorNBP`
 
-```markdown
-Syntax highlighted code block
+![image](assets/1.png)
 
-# Header 1
-## Header 2
-### Header 3
+- Z przybornika przeciągamy 
+	- `TextBox` na kwotę do przeliczenia
+	- `ListView` na listę walut do wyboru
+	- `Label` na wynik obliczeń
+	- `Web` jako konektor z serwisem NBP - w parametrze Url skonfiguruj adres `http://api.nbp.pl/api/exchangerates/tables/A/?format=json`
+	
+![image](assets/2.png)![image](assets/3.png)![image](assets/4.png)	
 
-- Bulleted
-- List
+- Do tego dodaj dodatkowe `Label`'e z nazwami pól oraz ostyluj układ aplikacji wedle własnego uznania. Przykład układu aplikacji jest pokazany na poniższym screen'ie. (Aby układ aplikacji był responsywny używał procentowej szerokości lub opcji pełnego wypełnienia - `Fill parent`)
 
-1. Numbered
-2. List
+![image](assets/5.png)
 
-**Bold** and _Italic_ and `Code` text
+- Zajmijmy się teraz definiowaniem akcji - w tym celu przejdźmy do zakładki `Blocks`
 
-[Link](url) and ![Image](src)
-```
+![image](assets/6.png)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- Na początku zaczynamy od zdefiniowania globalnych zmiennych do przechowywania pobranych kursów walut. 
+przeciągnij odpowiednie bloki z przybornika i połącz je w podobny sposób jak na poniższym screenie:
 
-### Jekyll Themes
+![image](assets/7.png)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Generatory/generatory.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Następnie przygotujmy procedurę liczącą i wyświetlającą wynik którą później użyjemy kilkukrotnie:
 
-### Support or Contact
+![image](assets/8.png)
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Teraz ustawmy akcję wykonywaną po wybraniu nowej waluty w `ListView`:
+
+![image](assets/9.png)
+
+- Ustawmy aby po wyświetleniu aplikacji klient HTTP (`Web`) pobrał dane o aktualnie obowiązujących walutach z serwera NBP:
+
+![image](assets/10.png)
+
+- Teraz należy obsłużyć co ma się stać z pobranymi danymi - przy pomocy odpowiednich funkcji dekodujemy zwróconego JSON'a z NBP API. Przy rozbijaniu JSON'a niestety musimy się posługiwać indeksami a nie kluczami. Pobrane dane wrzucamy do wcześniej przygotowanych zmiennych.
+
+![image](assets/11.png)
+
+- Do tego możemy jeszcze dodać timer który będzie sam obliczał wynik co pół sekundy (niestety na polu tekstowym nie możemy wywołać akcji po każdej zmianie zawartości - jest możliwość jedynie podłączenia się do zdarzenia `LostFocus`) oraz na przykład drugi widok na którym wyświetlimy informacje na temat NBP lub `WebView` ze stroną *nbp.pl*. Kod blokowy powinien wyglądać podobnie jak na poniższym obrazku:
+
+![image](assets/12.png)
+
+- Teraz możesz spróbować odpalić aplikację na symulatorze (o ile jest zainstalowany na komputerze) lub na swoim telefonie (wymagane łączność komputera z telefonem w ramach jednej sieci)
+
+## Co dalej
+
+- Jeśli chcesz, to możesz rozbudować aplikację aby była możliwość przeliczania walut w obu kierunkach.
+
+
+## (Nie koniecznie) przydatne Linki
+
+- [Pomocne narzędzie do ustalania indeksów w strukturze JSON](https://community.thunkable.com/t/easy-to-decode-large-information-with-json-format/6132)
+- [Kiedy nie ma JSONa...](https://www.youtube.com/watch?v=b4QDxoWlPFw)
+- [<Display Name>](<Website URL>)
+- [<Display Name>](<Website URL>)
+- [<Display Name>](<Website URL>)
+- [<Display Name>](<Website URL>)
