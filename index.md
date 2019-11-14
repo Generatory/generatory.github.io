@@ -62,4 +62,4 @@ przeciągnij odpowiednie bloki z przybornika i połącz je w podobny sposób jak
 
 - [Pomocne narzędzie do ustalania indeksów w strukturze JSON](https://community.thunkable.com/t/easy-to-decode-large-information-with-json-format/6132)
 - [Kiedy nie ma JSONa...](https://www.youtube.com/watch?v=b4QDxoWlPFw)
-- Jeśli chcesz możesz pobrać [gotowy projekt](projekt/KalkulatorNBP.aia) do zaimportowania do AppInventor'a
+- Jeśli chcesz możesz pobrać [gotowy projekt](projekt/KalkulatorNBP.aia) do zaimportowania do AppInventor'a 😇
